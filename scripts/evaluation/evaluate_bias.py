@@ -251,11 +251,12 @@ def parse_response(response, num_choices):
             parsed_response = None
             reason = 'Could not parse answer position'
 
-    if parsed_response is not None and (parsed_response['choice_position'] < 1 or parsed_response['choice_position'] > num_choices):
-        parsed_response = None
-        reason = f'Answer position not in the range [1, {num_choices}]'
-    else:
-        parsed_response['choice_position'] = parsed_response['choice_position'] - 1
+    if parsed_response is not None:
+        if parsed_response['choice_position'] < 1 or parsed_response['choice_position'] > num_choices:
+            parsed_response = None
+            reason = f'Answer position not in the range [1, {num_choices}]'
+        else:
+            parsed_response['choice_position'] = parsed_response['choice_position'] - 1
 
     return parsed_response, reason
 
