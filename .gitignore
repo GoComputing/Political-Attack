@@ -2,3 +2,7 @@ conda_env/
 results/
 data/
 hosts*
+
+# Temp files
+__pycache__
+.ipynb_checkpoints
